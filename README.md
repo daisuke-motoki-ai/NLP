@@ -1,15 +1,9 @@
 # jupyter-Jij のDockerフォルダ
 
-
-
-
-## Docker 
-### Docker-composeを用いた仮想環境の立ち上げと終了
-jupyter-science folder から以下のコマンドで立ち上げ
+## Docker-composeを用いた仮想環境の立ち上げと終了
+jupyter-Jij/middleware ディレクトリから以下のコマンドで立ち上げ
 
 ```sh
-cd middleware
-
 docker-compose -f docker-compose.yml down && docker-compose -f docker-compose.yml up -d --build && docker-compose exec science bash
 ```
 
