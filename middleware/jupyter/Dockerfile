@@ -6,8 +6,9 @@ RUN pip install \
     openjij
 
 # 必要なモジュールは以下のような形で連ねて書くこともできる
-# RUN geopandas \
-#     descartes
+RUN pip install geopandas \
+    descartes \
+    dwave_networkx
 
 USER $NB_USER
 ENTRYPOINT ["tini", "--"]
