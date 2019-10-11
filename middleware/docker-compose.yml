@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  science:
+    build: jupyter_science
+    ports:
+      - "8285:8888"
+    volumes:
+      - ../Software:/home/jovyan/notebook
+    working_dir: "/home/jovyan/notebook/jupyter"
+

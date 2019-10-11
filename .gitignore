@@ -1,0 +1,21 @@
+*.swp
+git_log_memo
+
+# software
+jij_project/
+
+.ipynb_checkpoints/
+*.so
+*.pyc
+*.c
+*.eps
+__pychche__
+tags
+# Makefile
+.cache
+build
+*.txt
+*.html
+
+ipynb2
+hoge_pala
