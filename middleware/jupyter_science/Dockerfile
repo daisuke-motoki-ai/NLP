@@ -1,7 +1,6 @@
 FROM jupyter/datascience-notebook
 MAINTAINER  motoki daisuke <motto.smiley1123@gmail.com>
 
-
 RUN pip install --upgrade pip && pip install -U cmake 
 RUN pip install \
     openjij
