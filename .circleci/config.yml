@@ -85,6 +85,12 @@ jobs:
     #       - run:
     #           name: Build service
     #           command: make
+      - run:
+          name: Activate and check the container
+          command: |
+            docker-compose -f docker-compose.yml up -d --build && \
+            docker-compose exec science bash
+
 
       - run:
           name: Start container and verify it's working
