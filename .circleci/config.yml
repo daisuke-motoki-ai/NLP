@@ -16,12 +16,12 @@ jobs:
           name: Print the Current Time
           command: date
 
-      - run:
-          name: Activate and check the container
-          command: l
-            docker-compose -f docker-compose.yml down && \
-            docker-compose -f docker-compose.yml up -d --build && \
-            docker-compose exec science bash
+        #- run:
+        #-   name: Activate and check the container
+        #-   command: l
+        #-     docker-compose -f docker-compose.yml down && \
+        #-     docker-compose -f docker-compose.yml up -d --build && \
+        #-     docker-compose exec science bash
 
 # version: 2
 # jobs:
