@@ -7,7 +7,11 @@ RUN pip install openjij
 # 必要なモジュールは以下のような形で連ねて書くこともできる
 RUN pip install geopandas \
     descartes \
-    dwave_networkx
+    dwave_networkx \
+    dwavebinarycsp \
+    networkx
+
+RUN pip install dwave-ocean-sdk 
 
 USER $NB_USER
 ENTRYPOINT ["tini", "--"]
