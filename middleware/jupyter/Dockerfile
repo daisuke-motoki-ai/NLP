@@ -13,6 +13,8 @@ RUN pip install geopandas \
 
 RUN pip install dwave-ocean-sdk 
 
+RUN pip install jupyter-contrib-nbextensions
+
 USER $NB_USER
 ENTRYPOINT ["tini", "--"]
 CMD ["jupyter", "notebook"]
