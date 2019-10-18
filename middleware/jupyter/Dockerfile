@@ -29,6 +29,12 @@ RUN git clone --quiet https://github.com/lambdalisue/jupyter-vim-binding $(jupyt
 RUN jupyter nbextension enable python-markdown/main  # MarkdownセルでPythonの変数を表示可能
 RUN jupyter nbextension enable toc2/main             # TableOfContents
 
+
+RUN pip install jupyterthemes
+RUN pip install --upgrade jupyterthemes
+RUN jt -t onedork -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T
+
+
 #####------------------------------
 #####  Work directry
 #####------------------------------
