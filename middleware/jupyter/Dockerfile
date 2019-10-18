@@ -9,12 +9,15 @@ RUN pip install geopandas \
     descartes \
     dwave_networkx \
     dwavebinarycsp \
-    networkx
-
-RUN pip install dwave-ocean-sdk 
-
-RUN pip install jupyter-contrib-nbextensions
+    dwave-ocean-sdk \
+    networkx \
+    jupyter-contrib-nbextensions
 
 USER $NB_USER
 ENTRYPOINT ["tini", "--"]
+WORKDIR /home/jovyan/.jupyter/
+COPY jupyter_notebook_config.py /home/jovyan/.jupyter
+RUN mkdir nbconfig
+COPY notebook.json /home/jovyan/.jupyter/nbconfig
+WORKDIR /home/jovyan/notebook/jupyter
 CMD ["jupyter", "notebook"]
