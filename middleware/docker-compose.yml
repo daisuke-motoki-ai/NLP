@@ -6,7 +6,7 @@ services:
     ports:
       - "8285:8888"
     volumes:
-      - ../Software:/home/jovyan/notebook
+      - ../software:/home/jovyan/notebook
     working_dir: "/home/jovyan/notebook/jupyter"
     command: jupyter notebook --ip=0.0.0.0 --allow-root --no-browser --NotebookApp.token=''
 
