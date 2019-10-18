@@ -23,14 +23,15 @@ ENTRYPOINT ["tini", "--"]
 #####------------------------------
 #####  Jupyter Extensions > テーマ関連はgit管理下にしない方がいいかも
 #####------------------------------
+RUN pip install jupyterthemes
+RUN jt -t chesterish -T -f roboto -fs 9 -tf merriserif -tfs 11 -nf ptsans -nfs 11 -dfs 8 -ofs 8
+
 RUN jupyter contrib nbextension install --user
 RUN git clone --quiet https://github.com/lambdalisue/jupyter-vim-binding $(jupyter --data-dir)/nbextensions/vim_binding && \
     jupyter nbextension enable vim_binding/vim_binding
 RUN jupyter nbextension enable python-markdown/main  # MarkdownセルでPythonの変数を表示可能
 RUN jupyter nbextension enable toc2/main             # TableOfContents
 
-RUN pip install jupyterthemes
-RUN jt -t chesterish -T -f roboto -fs 9 -tf merriserif -tfs 11 -nf ptsans -nfs 11 -dfs 8 -ofs 8
 
 #####------------------------------
 #####  Work directry
