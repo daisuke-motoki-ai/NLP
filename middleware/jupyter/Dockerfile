@@ -1,14 +1,9 @@
 FROM jupyter/datascience-notebook
 MAINTAINER  motoki daisuke <motto.smiley1123@gmail.com>
 
-# # ROOTにパスワードをセット
-# RUN echo 'root:newpassword' |chpasswd
-# 
-# # ユーザを作成
-# RUN useradd newuser
-# RUN echo 'newuser:newuserpass' |chpasswd
-# RUN echo "newuser    ALL=(ALL)       ALL" >> /etc/sudoers
-
+#####------------------------------
+#####  python module install
+#####------------------------------
 
 RUN yes | pip install --upgrade pip
 RUN yes | pip install --quiet -U cmake
@@ -24,13 +19,19 @@ RUN yes | pip install --quiet --no-cache-dir \
 USER $NB_USER
 ENTRYPOINT ["tini", "--"]
 
-# WORKDIR /home/jovyan/.jupyter/
-# COPY jupyter_notebook_config.py /home/jovyan/.jupyter
-# RUN mkdir nbconfig
-# COPY notebook.json /home/jovyan/.jupyter/nbconfig
-## Install Jupyter-vim-binding
+#  ref https://github.com/pollenjp/shell_script_for_setup/blob/30daf8f14e7e71b60af0a9fa04c3771121d6f93c/python-setup/pyenv-default-python3.5.2/pyenv-default-python3.5.2-install_jupyter-extensions.sh
+#####------------------------------
+#####  Jupyter Extensions
+#####------------------------------
+RUN jupyter contrib nbextension install --user
 RUN git clone --quiet https://github.com/lambdalisue/jupyter-vim-binding $(jupyter --data-dir)/nbextensions/vim_binding && \
     jupyter nbextension enable vim_binding/vim_binding
+RUN jupyter nbextension enable python-markdown/main  # MarkdownセルでPythonの変数を表示可能
+RUN jupyter nbextension enable toc2/main             # TableOfContents
+
+#####------------------------------
+#####  Work directry
+#####------------------------------
 
 WORKDIR /home/jovyan/notebook/jupyter
 CMD ["jupyter", "notebook"]
