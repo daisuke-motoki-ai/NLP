@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   science:
@@ -9,3 +9,9 @@ services:
       - ../software:/home/jovyan/notebook
     command: jupyter notebook --ip=0.0.0.0 --allow-root --no-browser --NotebookApp.token=''
 
+  shell:
+    build: shell
+    volumes: # shell x > ./shell o
+      - ./shell/setting:/root
+    working_dir: /root
+    tty: true # コンテナがバックグラウンドで稼働し続ける (avoid stopping)
