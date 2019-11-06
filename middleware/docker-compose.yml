@@ -3,10 +3,14 @@ version: '3'
 services:
   science:
     build: jupyter
+    depends_on:
+      - python
     ports:
       - "8285:8888"
+    #volumes:
+    #  - ../software:/home/jovyan/notebook
     volumes:
-      - ../software:/home/jovyan/notebook
+      - ../software:/home/
     command: jupyter notebook --ip=0.0.0.0 --allow-root --no-browser --NotebookApp.token=''
 
   shell:
