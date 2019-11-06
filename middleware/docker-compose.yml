@@ -11,7 +11,13 @@ services:
 
   shell:
     build: shell
+    depends_on:
+      - python
     volumes: # shell x > ./shell o
       - ./shell/setting:/root
     working_dir: /root
     tty: true # コンテナがバックグラウンドで稼働し続ける (avoid stopping)
+
+  python:
+    build: python
+
