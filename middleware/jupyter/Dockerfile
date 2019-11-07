@@ -1,28 +1,6 @@
-#FROM jupyter/datascience-notebook
-#FROM middleware_python
-FROM jupyter/base-notebook
+#FROM jupyter/minimal-notebook
+FROM middleware_python
 MAINTAINER  motoki daisuke <motto.smiley1123@gmail.com>
-
-#####------------------------------
-#####  python module install
-#####------------------------------
-# When you install jupyter on ubuntu:18.04, instaling stop 
-# and I select noninteractive mode for avoiding the problem.
-#ENV DEBIAN_FRONTEND=noninteractive 
-#RUN apt update && apt install -y \
-#      jupyter-notebook
-
-#RUN yes | pip install --upgrade pip
-#RUN yes | pip install --quiet -U cmake
-#RUN yes | pip install --quiet --no-cache-dir \
-#    openjij \
-#    geopandas \
-#    descartes \
-#    networkx \
-#    jupyter-contrib-nbextensions \
-#    dwave_networkx \
-#    dwavebinarycsp \
-#    dwave-ocean-sdk
 
 #  ref https://github.com/pollenjp/shell_script_for_setup/blob/30daf8f14e7e71b60af0a9fa04c3771121d6f93c/python-setup/pyenv-default-python3.5.2/pyenv-default-python3.5.2-install_jupyter-extensions.sh
 #####------------------------------
@@ -54,11 +32,4 @@ RUN jupyter nbextension enable toc2/main             # TableOfContents
 #####------------------------------
 #####  Work directry
 #####------------------------------
-#
-#RUN yes | pip3 install --upgrade pip
-#RUN yes | pip install --upgrade pip
-#RUN yes | pip install --quiet -U cmake
-#RUN yes | pip install --quiet --no-cache-dir \
-#      matplotlib
-#
 WORKDIR /home/jovyan/notebook/jupyter

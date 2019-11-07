@@ -1,6 +1,5 @@
-# FROM ubuntu:18.04
-#FROM middleware_python
-FROM jupyter/base-notebook
+#FROM jupyter/minimal-notebook
+FROM middleware_python
 MAINTAINER  motoki daisuke <motto.smiley1123@gmail.com>
 #####------------------------------
 #####  shell & editor environment 
