@@ -22,7 +22,7 @@ jobs: # 1回の実行の基本作業単位
       - run:
           # Xcode の CLI ツール `xcodebuild` を使用してテストを実行します
           name: build
-          command: docker-compose -f middleware/edocker-compose.yml up -d --build
+          command: docker-compose -f middleware/docker-compose.yml up -d --build
       - run:
           # Xcode の CLI ツール `xcodebuild` を使用してテストを実行します
           name: stop
