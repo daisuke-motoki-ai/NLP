@@ -1,12 +1,18 @@
-FROM ubuntu:18.04
-#####------------------------------
-#####  python virtual environment
-#####------------------------------
-RUN apt update && apt install -y \
-      software-properties-common \
-      python3.7 \
-      python3-pip
-RUN add-apt-repository ppa:deadsnakes/ppa
+FROM jupyter/minimal-notebook
+MAINTAINER  motoki daisuke <motto.smiley1123@gmail.com>
 
-
+#####------------------------------
+#####  python module install
+#####------------------------------
+RUN yes | pip install --upgrade pip
+RUN yes | pip install --quiet -U cmake
+RUN yes | pip install --quiet --no-cache-dir \
+    openjij
+    #     geopandas \
+    #     descartes \
+    #     networkx \
+    #     jupyter-contrib-nbextensions \
+    #     dwave_networkx \
+    #     dwavebinarycsp \
+    #     dwave-ocean-sdk
 
