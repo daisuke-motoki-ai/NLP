@@ -1,6 +1,7 @@
 version: 2 # CircleCI のバージョン 2.0 を使用していることを示します
 jobs: # 1回の実行の基本作業単位
   build: # `Workflows` を使用しない実行では、エントリポイントとして `build` ジョブが必要です
+    working_directory: ./middleware
     macos:  # macOS Executor を使用していることを示します
       xcode: "10.0.0" # 選択された Xcode のバージョン
     steps: # 実行する一連のコマンド
@@ -8,18 +9,18 @@ jobs: # 1回の実行の基本作業単位
       - run:
           # Xcode の CLI ツール `xcodebuild` を使用してテストを実行します
           name: 単体テストを実行
-          command: xcodebuild test -scheme circleci-demo-macos
-      - run:
-          # アプリケーションをビルドします
-          name: アプリケーションをビルド
-          command: xcodebuild
-      - run:
-          # Xcode のビルド出力を圧縮して、アーティファクトとして格納できるようにします
-          name: 保存のためにアプリを圧縮
-          command: zip -r app.zip build/Release/circleci-demo-macos.app
-      - store_artifacts: # このビルド出力を保存します  (詳細については https://circleci.com/docs/ja/2.0/artifacts/ を参照)
-          path: app.zip
-          destination: app
+          command: docker-compose -f docker-compose.yml up -d --build
+        #      - run:
+        #          # アプリケーションをビルドします
+        #          name: アプリケーションをビルド
+        #          command: xcodebuild
+        #      - run:
+        #          # Xcode のビルド出力を圧縮して、アーティファクトとして格納できるようにします
+        #          name: 保存のためにアプリを圧縮
+        #          command: zip -r app.zip build/Release/circleci-demo-macos.app
+        #      - store_artifacts: # このビルド出力を保存します  (詳細については https://circleci.com/docs/ja/2.0/artifacts/ を参照)
+        #          path: app.zip
+        #          destination: app
 #
 #
 #

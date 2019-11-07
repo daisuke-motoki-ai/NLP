@@ -1,5 +1,5 @@
 #FROM jupyter/minimal-notebook
-FROM middleware_python
+FROM middleware_jupyterbase
 MAINTAINER  motoki daisuke <motto.smiley1123@gmail.com>
 #####------------------------------
 #####  shell & editor environment 
@@ -10,8 +10,3 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
       tmux \
       vim
 # これらの設定ファイルはローカルに置いておけるようにする
-
-
-#####------------------------------
-#####  processing on terminal
-#####------------------------------
