@@ -1,5 +1,6 @@
 #FROM jupyter/datascience-notebook
-FROM middleware_python
+#FROM middleware_python
+FROM jupyter/base-notebook
 MAINTAINER  motoki daisuke <motto.smiley1123@gmail.com>
 
 #####------------------------------
@@ -7,9 +8,9 @@ MAINTAINER  motoki daisuke <motto.smiley1123@gmail.com>
 #####------------------------------
 # When you install jupyter on ubuntu:18.04, instaling stop 
 # and I select noninteractive mode for avoiding the problem.
-ENV DEBIAN_FRONTEND=noninteractive 
-RUN apt update && apt install -y \
-      jupyter-notebook
+#ENV DEBIAN_FRONTEND=noninteractive 
+#RUN apt update && apt install -y \
+#      jupyter-notebook
 
 #RUN yes | pip install --upgrade pip
 #RUN yes | pip install --quiet -U cmake
@@ -28,20 +29,36 @@ RUN apt update && apt install -y \
 #####  Jupyter Extensions > テーマ関連はgit管理下にしない方がいいかも
 #####------------------------------
 
-#RUN jupyter contrib nbextension install --user
-#RUN git clone --quiet https://github.com/lambdalisue/jupyter-vim-binding $(jupyter --data-dir)/nbextensions/vim_binding && \
-#    jupyter nbextension enable vim_binding/vim_binding
-#RUN jupyter nbextension enable python-markdown/main  # MarkdownセルでPythonの変数を表示可能
-#RUN jupyter nbextension enable toc2/main             # TableOfContents
+# 以下はbasebotebookの方にうつす
+USER root
+# Install all OS dependencies for fully functional notebook server
+RUN apt-get update && apt-get install -yq --no-install-recommends \
+    git
+##
 
-#RUN pip install jupyterthemes
-#RUN jt -t chesterish -T -f roboto -fs 9 -tf merriserif -tfs 11 -nf ptsans -nfs 11 -dfs 8 -ofs 8
+USER $NB_USER
+ENTRYPOINT ["tini", "--"]
+
+RUN yes | pip install --upgrade pip
+RUN yes | pip install --quiet --no-cache-dir \
+      jupyter_contrib_nbextensions
+RUN jupyter contrib nbextension install --user
+RUN git clone --quiet https://github.com/lambdalisue/jupyter-vim-binding $(jupyter --data-dir)/nbextensions/vim_binding && \
+    jupyter nbextension enable vim_binding/vim_binding
+RUN jupyter nbextension enable python-markdown/main  # MarkdownセルでPythonの変数を表示可能
+RUN jupyter nbextension enable toc2/main             # TableOfContents
+
+# RUN pip install jupyterthemes
+# RUN jt -t chesterish -T -f roboto -fs 9 -tf merriserif -tfs 11 -nf ptsans -nfs 11 -dfs 8 -ofs 8
 
 #####------------------------------
 #####  Work directry
 #####------------------------------
-#USER $NB_USER
-#ENTRYPOINT ["tini", "--"]
 #
-#WORKDIR /home/jovyan/notebook/jupyter
-#CMD ["jupyter", "notebook"]
+#RUN yes | pip3 install --upgrade pip
+#RUN yes | pip install --upgrade pip
+#RUN yes | pip install --quiet -U cmake
+#RUN yes | pip install --quiet --no-cache-dir \
+#      matplotlib
+#
+WORKDIR /home/jovyan/notebook/jupyter

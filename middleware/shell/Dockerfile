@@ -1,10 +1,12 @@
 # FROM ubuntu:18.04
-FROM middleware_python
-
+#FROM middleware_python
+FROM jupyter/base-notebook
+MAINTAINER  motoki daisuke <motto.smiley1123@gmail.com>
 #####------------------------------
 #####  shell & editor environment 
 #####------------------------------
-RUN apt update && apt install -y \
+USER root
+RUN apt-get update && apt-get install -yq --no-install-recommends \
       zsh \
       tmux \
       vim
