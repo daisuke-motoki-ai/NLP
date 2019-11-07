@@ -2,10 +2,6 @@
 git_log_memo
 
 # software
-software/jupyter
-software/jovyan
-software/.*
-
 .ipynb_checkpoints/
 *.so
 *.pyc
@@ -21,3 +17,10 @@ build
 
 ipynb2
 hoge_pala
+
+
+
+software/jupyter/*
+software/jovyan/*
+software/*.*
+!.gitkeep
