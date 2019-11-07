@@ -7,8 +7,6 @@ services:
       - python
     ports:
       - "8285:8888"
-    #volumes:
-    #  - ../software:/home/jovyan/notebook
     volumes:
       - ../software:/home/jovyan/notebook
     # 以下コマンドは内部処理なので、Dockerfileに書いたほうが良さげ
@@ -21,7 +19,7 @@ services:
     volumes: # shell x > ./shell o
       - ./shell/setting:/root
     working_dir: /root
-    tty: true # コンテナがバックグラウンドで稼働し続ける (avoid stopping)
+    tty: true # avoid container stopping
 
   python:
     build: python
