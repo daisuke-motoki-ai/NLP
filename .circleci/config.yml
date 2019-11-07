@@ -7,6 +7,11 @@ jobs: # 1回の実行の基本作業単位
     steps: # 実行する一連のコマンド
       - checkout  # ユーザーのバージョン管理システムからコードをプルダウンします
       - run:
+          name: login aws ecr
+          command: |
+              login="$(aws ecr get-login)"
+              ${login}
+      - run:
           name: Docker Compose をインストール
           command: |
             curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
