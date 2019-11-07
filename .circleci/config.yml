@@ -7,18 +7,21 @@ jobs: # 1回の実行の基本作業単位
       xcode: "10.0.0" # 選択された Xcode のバージョン
     steps: # 実行する一連のコマンド
       - checkout  # ユーザーのバージョン管理システムからコードをプルダウンします
+#       - run:
+#           name: login aws ecr
+#           command: |
+#               login="$(aws ecr get-login)"
+#               ${login}
       - run:
-          name: login aws ecr
-          command: |
-              login="$(aws ecr get-login)"
-              ${login}
-      - run:
-          name: Docker Compose をインストール
-          command: |
-            curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-            chmod +x ~/docker-compose
-            sudo mv ~/docker-compose /usr/local/bin/docker-compose
-      - setup_remote_docker
+          name: Build Docker Image
+          command: docker-compose build
+#      - run:
+#          name: Docker Compose をインストール
+#          command: |
+#            curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+#            chmod +x ~/docker-compose
+#            sudo mv ~/docker-compose /usr/local/bin/docker-compose
+#      - setup_remote_docker
       - run:
           # Xcode の CLI ツール `xcodebuild` を使用してテストを実行します
           name: 単体テストを実行
