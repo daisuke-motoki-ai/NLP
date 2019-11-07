@@ -3,21 +3,26 @@ version: '3'
 services:
   science:
     build: jupyter
+    #depends_on:
+    #  - python
     ports:
       - "8285:8888"
+    #volumes:
+    #  - ../software:/home/jovyan/notebook
     volumes:
       - ../software:/home/jovyan/notebook
+    # 以下コマンドは内部処理なので、Dockerfileに書いたほうが良さげ
     command: jupyter notebook --ip=0.0.0.0 --allow-root --no-browser --NotebookApp.token=''
 
   shell:
     build: shell
-    depends_on:
-      - python
+    #depends_on:
+    #  - python
     volumes: # shell x > ./shell o
       - ./shell/setting:/root
     working_dir: /root
     tty: true # コンテナがバックグラウンドで稼働し続ける (avoid stopping)
 
-  python:
-    build: python
+  #python:
+  #  build: python
 
