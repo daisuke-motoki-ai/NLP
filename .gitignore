@@ -2,9 +2,9 @@
 git_log_memo
 
 # software
-software/
-jij_project/
-avilen/
+software/jupyter
+software/jovyan
+software/.*
 
 .ipynb_checkpoints/
 *.so

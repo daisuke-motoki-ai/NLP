@@ -4,23 +4,26 @@ services:
   science:
     build: jupyter
     depends_on:
-      - python
+      - jupyterbase
     ports:
       - "8285:8888"
     volumes:
       - ../software:/home/jovyan/notebook
-    # 以下コマンドは内部処理なので、Dockerfileに書いたほうが良さげ
+    working_dir: /home/jovyan/notebook/jupyter
     command: jupyter notebook --ip=0.0.0.0 --allow-root --no-browser --NotebookApp.token=''
 
   shell:
     build: shell
     depends_on:
-      - python
+      - jupyterbase
     volumes: # shell x > ./shell o
       - ./shell/setting:/root
-    working_dir: /root
+      - ../software:/home
+    working_dir: /home/jupyter
     tty: true # avoid container stopping
 
-  python:
-    build: python
+      # makefile の実行を書くかも
+
+  jupyterbase:
+    build: jupyterbase
 

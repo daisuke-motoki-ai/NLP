@@ -1,10 +1,10 @@
 #FROM jupyter/minimal-notebook
-FROM middleware_python
+FROM middleware_jupyterbase
 MAINTAINER  motoki daisuke <motto.smiley1123@gmail.com>
 
 #  ref https://github.com/pollenjp/shell_script_for_setup/blob/30daf8f14e7e71b60af0a9fa04c3771121d6f93c/python-setup/pyenv-default-python3.5.2/pyenv-default-python3.5.2-install_jupyter-extensions.sh
 #####------------------------------
-#####  Jupyter Extensions > テーマ関連はgit管理下にしない方がいいかも
+#####  Jupyter Extensions
 #####------------------------------
 
 # 以下はbasebotebookの方にうつす
@@ -29,7 +29,3 @@ RUN jupyter nbextension enable toc2/main             # TableOfContents
 # RUN pip install jupyterthemes
 # RUN jt -t chesterish -T -f roboto -fs 9 -tf merriserif -tfs 11 -nf ptsans -nfs 11 -dfs 8 -ofs 8
 
-#####------------------------------
-#####  Work directry
-#####------------------------------
-WORKDIR /home/jovyan/notebook/jupyter
