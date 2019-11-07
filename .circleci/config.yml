@@ -7,12 +7,12 @@ jobs: # 1回の実行の基本作業単位
       xcode: "10.0.0" # 選択された Xcode のバージョン
     steps: # 実行する一連のコマンド
       - checkout  # ユーザーのバージョン管理システムからコードをプルダウンします
-        - run:
-            name: Install Docker Compose
-            command: |
-              curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-              chmod +x ~/docker-compose
-              sudo mv ~/docker-compose /usr/local/bin/docker-compose
+      - run:
+          name: Install Docker Compose
+          command: |
+            curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+            chmod +x ~/docker-compose
+            sudo mv ~/docker-compose /usr/local/bin/docker-compose
 
 
 #       - run:
