@@ -1,3 +1,4 @@
+export MYVIMRCSUB=$HOME/setting_folder/.vimrc_sub
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 # Path to python-program
