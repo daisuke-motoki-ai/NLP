@@ -10,3 +10,5 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
       tmux \
       vim
 # これらの設定ファイルはローカルに置いておけるようにする
+#
+ADD ./setting /home/jovyan
