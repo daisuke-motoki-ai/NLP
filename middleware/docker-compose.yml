@@ -17,13 +17,12 @@ services:
     depends_on:
       - jupyterbase
     volumes: # shell x > ./shell o
-      - ./shell/setting:/root
-      - ../software:/home
-    working_dir: /home/jupyter
+      - ./shell/setting:/home/jovyan
+      - ../software:/home/jovyan/notebook
+    working_dir: /home/jovyan/notebook/jupyter
     tty: true # avoid container stopping
 
       # makefile の実行を書くかも
 
   jupyterbase:
     build: jupyterbase
-
