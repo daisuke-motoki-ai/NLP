@@ -1,14 +1,14 @@
-version: 2 # CircleCI のバージョン 2.0 を使用していることを示します
-jobs: # 1回の実行の基本作業単位
-  build: # `Workflows` を使用しない実行では、エントリポイントとして `build` ジョブが必要です
+version: 2 
+jobs:
+  build:
 #    machine: true
 #    macos:  # macOS Executor を使用していることを示します
 #      xcode: "10.0.0" # 選択された Xcode のバージョン
     machine:
       image: circleci/classic:edge
     working_directory: ~/middleware
-    steps: # 実行する一連のコマンド
-      - checkout  # ユーザーのバージョン管理システムからコードをプルダウンします
+    steps:
+      - checkout
       - run:
           name: Install Docker Compose
           command: |
@@ -16,16 +16,8 @@ jobs: # 1回の実行の基本作業単位
             chmod +x ~/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run:
-          name: check
-          command: pwd
-      - run:
-          name: check
-          command: ls
-      - run:
-          # Xcode の CLI ツール `xcodebuild` を使用してテストを実行します
           name: build
           command: docker-compose -f middleware/docker-compose.yml up -d --build
       - run:
-          # Xcode の CLI ツール `xcodebuild` を使用してテストを実行します
           name: stop
           command: docker-compose -f middleware/docker-compose.yml down
