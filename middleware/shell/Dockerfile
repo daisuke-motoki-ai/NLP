@@ -45,4 +45,4 @@ RUN chmod +x peco
 # PATHの通っている所にpecoを配置
 RUN cp peco /usr/local/bin
 
-ADD ./setting /home/jovyan
+# ADD ./setting /home/jovyan

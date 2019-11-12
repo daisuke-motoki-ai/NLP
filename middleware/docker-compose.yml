@@ -17,8 +17,9 @@ services:
     depends_on:
       - jupyterbase
     volumes: # shell x > ./shell o
-      #  - ./shell/setting:/home/jovyan
+      - ./shell/setting:/home/jovyan
       - ../software:/home/jovyan/notebook
+
 
     working_dir: /home/jovyan
     command: tmux

@@ -11,7 +11,3 @@ source $MYVIMRCSUB/.vimrc_python
 " コマンドラインの履歴を10000件保存する
 " .vimrc_main ではうまくいかないので，ここに書く
 set history=10000
-
-
-
-
