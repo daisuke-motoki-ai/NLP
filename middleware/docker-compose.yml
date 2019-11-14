@@ -17,11 +17,12 @@ services:
     depends_on:
       - jupyterbase
     volumes: # shell x > ./shell o
-      - ./shell/setting:/home/jovyan
+      #- ./shell/setting:/home/jovyan
+      - ../../setting:/home/jovyan
       - ../software:/home/jovyan/notebook
 
 
-    working_dir: /home/jovyan
+    working_dir: /home/jovyan/notebook/jupyter/jij_project/5G-optimize-notebook-master
     command: tmux
     tty: true # avoid container stopping
 
