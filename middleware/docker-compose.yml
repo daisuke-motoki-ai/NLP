@@ -22,7 +22,7 @@ services:
       - ../software:/home/jovyan/notebook
 
 
-    working_dir: /home/jovyan/notebook/jupyter/jij_project/5G-optimize-notebook-master
+    working_dir: /home/jovyan/notebook/
     command: tmux
     tty: true # avoid container stopping
 
