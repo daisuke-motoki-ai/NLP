@@ -11,22 +11,15 @@ USER root
 RUN apt-get update && apt-get install -yq --no-install-recommends \
       tmux \
       vim
-
 #####------------------------------
 #####  zsh setting 
 #####------------------------------
 RUN apt upgrade -y
-# RUN apt-get update && apt-get install -yq --no-install-recommends \
-#       powerline \
-#       fonts-powerline
-
 RUN apt install -y zsh powerline fonts-powerline
 RUN chsh -s /bin/zsh
-# 
 # oh-my-zsh
 RUN git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 RUN cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
-# RUN gedit .zshrc
 
 #####------------------------------
 #####  peco 
@@ -46,3 +39,12 @@ RUN chmod +x peco
 RUN cp peco /usr/local/bin
 
 # ADD ./setting /home/jovyan
+#####------------------------------
+#####  peco 
+#####------------------------------
+
+RUN pip install -q pynvim
+RUN apt update
+RUN apt install -yq software-properties-common
+RUN add-apt-repository ppa:neovim-ppa/stable
+RUN apt install -yq neovim
