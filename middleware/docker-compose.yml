@@ -17,7 +17,6 @@ services:
     depends_on:
       - jupyterbase
     volumes: # shell x > ./shell o
-      #- ./shell/setting:/home/jovyan
       - ../../setting:/home/jovyan
       - ../software:/home/jovyan/notebook
 
@@ -25,8 +24,6 @@ services:
     working_dir: /home/jovyan/notebook/
     command: tmux
     tty: true # avoid container stopping
-
-      # makefile の実行を書くかも
 
   jupyterbase:
     build: jupyterbase

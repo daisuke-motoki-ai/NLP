@@ -16,3 +16,6 @@ RUN yes | pip install --quiet --no-cache-dir \
     dwavebinarycsp \
     dwave-ocean-sdk
 
+
+RUN yes | pip install --quiet --no-cache-dir \
+    mecab-python3
