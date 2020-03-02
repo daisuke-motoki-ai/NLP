@@ -2,7 +2,7 @@ version: '3'
 
 services:
   science:
-    build: jupyter
+    build: jupyter_setting
     depends_on:
       - jupyterbase
     ports:
@@ -16,14 +16,15 @@ services:
     build: shell
     depends_on:
       - jupyterbase
+    ports:
+      - "5000:5000"
+      - "3000:3000"
     volumes: # shell x > ./shell o
       - ../../setting:/home/jovyan
       - ../software:/home/jovyan/notebook
-
-
     working_dir: /home/jovyan/notebook/
     command: tmux
     tty: true # avoid container stopping
 
   jupyterbase:
-    build: jupyterbase
+    build: jupyter_python_module

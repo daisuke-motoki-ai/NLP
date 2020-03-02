@@ -1,4 +1,3 @@
-#FROM jupyter/minimal-notebook
 FROM middleware_jupyterbase
 MAINTAINER  motoki daisuke <motto.smiley1123@gmail.com>
 
@@ -9,10 +8,8 @@ MAINTAINER  motoki daisuke <motto.smiley1123@gmail.com>
 
 # 以下はbasebotebookの方にうつす
 USER root
-# Install all OS dependencies for fully functional notebook server
 RUN apt-get update && apt-get install -yq --no-install-recommends \
     git
-##
 
 USER $NB_USER
 ENTRYPOINT ["tini", "--"]
@@ -25,7 +22,3 @@ RUN git clone --quiet https://github.com/lambdalisue/jupyter-vim-binding $(jupyt
     jupyter nbextension enable vim_binding/vim_binding
 RUN jupyter nbextension enable python-markdown/main  # MarkdownセルでPythonの変数を表示可能
 RUN jupyter nbextension enable toc2/main             # TableOfContents
-
-# RUN pip install jupyterthemes
-# RUN jt -t chesterish -T -f roboto -fs 9 -tf merriserif -tfs 11 -nf ptsans -nfs 11 -dfs 8 -ofs 8
-

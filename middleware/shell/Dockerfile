@@ -44,14 +44,3 @@ RUN cp peco /usr/local/bin
 
 RUN pip install autopep8
 RUN pip install flake8
-
-# ADD ./setting /home/jovyan
-#####------------------------------
-#####  peco 
-#####------------------------------
-
-#RUN pip install -q pynvim
-#RUN apt update
-#RUN apt install -yq software-properties-common
-#RUN add-apt-repository ppa:neovim-ppa/stable
-#RUN apt install -yq neovim

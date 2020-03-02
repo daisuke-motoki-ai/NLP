@@ -1,0 +1,4 @@
+{'timestamp': '2019/12/15 03:26:51', 'program': 'error.ipynb', 'line': 10, 'message': '400 Bad Request: The browser (or proxy) sent a request that this server could not understand.'}
+{'timestamp': '2019/12/15 03:26:57', 'program': 'error.ipynb', 'line': 10, 'message': '400 Bad Request: The browser (or proxy) sent a request that this server could not understand.'}
+{'timestamp': '2020/02/14 11:43:10', 'program': 'error.ipynb', 'line': 10, 'message': '400 Bad Request: The browser (or proxy) sent a request that this server could not understand.'}
+{'timestamp': '2020/02/14 11:44:06', 'program': 'error.ipynb', 'line': 10, 'message': '400 Bad Request: The browser (or proxy) sent a request that this server could not understand.'}
