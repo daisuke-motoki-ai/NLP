@@ -1,5 +1,4 @@
-#FROM jupyter/minimal-notebook
-FROM middleware_jupyterbase
+FROM middleware_python_module
 MAINTAINER  motoki daisuke <motto.smiley1123@gmail.com>
 #####------------------------------
 #####  shell & editor environment 

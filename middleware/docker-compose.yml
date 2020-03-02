@@ -1,10 +1,10 @@
 version: '3'
 
 services:
-  science:
-    build: jupyter_setting
+  jupyter:
+    build: jupyter
     depends_on:
-      - jupyterbase
+      - python_module
     ports:
       - "8285:8888"
     volumes:
@@ -15,7 +15,7 @@ services:
   shell:
     build: shell
     depends_on:
-      - jupyterbase
+      - python_module
     ports:
       - "5000:5000"
       - "3000:3000"
@@ -26,5 +26,5 @@ services:
     command: tmux
     tty: true # avoid container stopping
 
-  jupyterbase:
-    build: jupyter_python_module
+  python_module:
+    build: python_module
