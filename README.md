@@ -1,4 +1,4 @@
-# Jupyter上でopenJijを利用するための仮想環境
+# Jupyter上でNLPを利用するための仮想環境
 ## Docker-composeを用いた仮想環境の立ち上げと終了
 jupyter-Jij/middleware ディレクトリから以下のコマンドで立ち上げ
 
