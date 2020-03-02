@@ -1,30 +1,18 @@
 # -*- coding: utf-8 -*-
-# https://qiita.com/ynakayama/items/2cc0b1d3cf1a2da612e4
 
 from flask import Flask, render_template, request, redirect, url_for
 import numpy as np
-import MeCab
 
 app = Flask(__name__)
 
 # Main
 def picked_up():
     messages = [
-        "こんにちは形態素解析したいフレーズを教えてください",
-        "形態素解析？",
-        "形態素解析するよ"
+        "こんにちは、あなたの名前を入力してください",
+        "やあ！お名前は何ですか？",
+        "あなたの名前を教えてね"
     ]
     return np.random.choice(messages)
-
-def tokenize(text):
-    tagger = MeCab.Tagger()
-    node = tagger.parseToNode(text)
-    tokens = []
-    while node:
-        if node.surface != '':
-            tokens.append(node.surface)
-        node = node.next
-    return tokens
 
 # Routing
 @app.route('/')
@@ -39,11 +27,8 @@ def post():
     title = "こんにちは"
     if request.method == 'POST':
         name = request.form['name']
-        tagger = MeCab.Tagger()
-        words = tagger.parse(name)
-        words = tokenize(name)
         return render_template('index.html',
-                               name=words, title=title)
+                               name=name, title=title)
     else:
         return redirect(url_for('index'))
 

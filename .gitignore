@@ -1,5 +1,3 @@
-software/webapi/flask-hello
-software/mecab-ipadic-neologd
 *.swp
 git_log_memo
 
@@ -22,7 +20,7 @@ hoge_pala
 
 
 
-software/jupyter/*
+# software/jupyter/*
 software/jovyan/*
 software/*.*
 !.gitkeep

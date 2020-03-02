@@ -11,4 +11,5 @@ RUN yes | pip install --quiet --no-cache-dir \
     flask \
     mecab-python3 \
     sklearn \
-    gensim
+    gensim \
+    tokenizer
