@@ -12,4 +12,3 @@ RUN yes | pip install --quiet --no-cache-dir \
     mecab-python3 \
     sklearn \
     gensim \
-    tokenizer
